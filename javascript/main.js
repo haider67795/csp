@@ -54,3 +54,90 @@ function picChangeToDefault() {
       "";
   document.body.style.backgroundColor = "";
 }
+
+function add(num) {
+  let display = document.getElementById("display");
+  display.value += num;
+}
+
+// function deleteAdd(num) {
+//   let display = document.getElementById("display");
+//   display.value.toString().slice(0, -1);
+// }
+
+function clearD() {
+  let display = document.getElementById("display");
+  display.value = "";
+}
+function multiplyNum() {
+  let display = document.getElementById("display");
+  currentVal = display.value;
+  addToList("*");
+  clearD();
+}
+
+function subNum() {
+  let display = document.getElementById("display");
+  currentVal = display.value;
+  addToList("-");
+  clearD();
+}
+function addNum() {
+  let display = document.getElementById("display");
+  currentVal = display.value;
+  addToList("+");
+  clearD();
+}
+function divideNum() {
+  let display = document.getElementById("display");
+  currentVal = display.value;
+  addToList("/");
+  clearD();
+}
+
+let listOfNums = [];
+function addToList(operation) {
+  num = document.getElementById("display").value;
+  listOfNums.push(num);
+  listOfNums.push(operation);
+  console.log(listOfNums);
+}
+
+function solve() {
+  addToList("");
+
+  for (i = 0; i < listOfNums.length; i += 2) {
+    if (listOfNums[i + 1] == "*") {
+      let answer = listOfNums[i] * listOfNums[i + 2];
+      console.log(answer);
+      let display = document.getElementById("display");
+
+      display.value = answer;
+    } else if (listOfNums[i + 1] == "-") {
+      let answer = listOfNums[i] - listOfNums[i + 2];
+      console.log(answer);
+      let display = document.getElementById("display");
+
+      display.value = answer;
+    } else if (listOfNums[i + 1] == "+") {
+      let answer = parseInt(listOfNums[i]) + parseInt(listOfNums[i + 2]);
+      console.log(answer);
+      let display = document.getElementById("display");
+
+      display.value = answer;
+    } else if (listOfNums[i + 1] == "/") {
+      let answer = listOfNums[i] / listOfNums[i + 2];
+      console.log(answer);
+      let display = document.getElementById("display");
+
+      display.value = answer;
+    }
+  }
+
+  listOfNums = [];
+}
+
+function clearAll() {
+  clearD();
+  listOfNums = [];
+}

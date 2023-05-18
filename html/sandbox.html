@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Javascript Testing</title>
     <link rel="stylesheet" href="/css/main.css" />
-    <script src="/javascript/main.js"></script>
+    <link rel="icon" type="image/x-icon" href="/media/js.png" />
   </head>
   <body class="SBBody">
     <section class="bar">
@@ -42,16 +42,48 @@
     <hr />
     <h1 id="calcHead">Calculator</h1>
 
-    <div id="calcContainer">
-      <div class="key"><button class="num">1</button></div>
-      <div class="key"><button class="num">2</button></div>
-      <div class="key"><button class="num">3</button></div>
-      <div class="key"><button class="num">4</button></div>
-      <div class="key"><button class="num">5</button></div>
-      <div class="key"><button class="num">6</button></div>
-      <div class="key"><button class="num">7</button></div>
-      <div class="key"><button class="num">8</button></div>
-      <div class="key"><button class="num">9</button></div>
+    <div class="calccontainer">
+      <div class="calculator">
+        <div>
+          <input type="text" name="display" id="display" />
+        </div>
+        <div>
+          <input class="b" type="button" value="7" onclick="add(7)" />
+          <input class="b" type="button" value="8" onclick="add(8)" />
+          <input class="b" type="button" value="9" onclick="add(9)" />
+          <input class="b" type="button" value="/" onclick="divideNum()" />
+        </div>
+        <div>
+          <input class="b" type="button" value="4" onclick="add(4)" />
+          <input class="b" type="button" value="5" onclick="add(5)" />
+          <input class="b" type="button" value="6" onclick="add(6)" />
+          <input
+            class="b"
+            type="button"
+            value="*"
+            id="m"
+            onclick="multiplyNum()"
+          />
+        </div>
+        <div>
+          <input class="b" type="button" value="1" onclick="add(1)" />
+          <input class="b" type="button" value="2" onclick="add(2)" />
+          <input class="b" type="button" value="3" onclick="add(3)" />
+          <input class="b" type="button" value="-" onclick="subNum()" />
+        </div>
+
+        <div>
+          <input class="b" type="button" value="0" onclick="add(2)" />
+          <input class="b" type="button" value="C" onclick="clearD()" />
+          <input class="b" type="button" value="CE" onclick="clearAll()" />
+          <input class="b" type="button" value="+" onclick="addNum()" />
+        </div>
+
+        <div>
+          <input class="b" type="button" value="=" onclick="solve()" />
+        </div>
+      </div>
     </div>
+    <script src="/javascript/main.js"></script>
   </body>
 </html>

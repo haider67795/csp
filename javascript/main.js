@@ -1,5 +1,9 @@
 let click = new Audio("/media/click2.mp3");
 
+function playAudio() {
+  click.play();
+}
+
 function picChangeToIvan() {
   click.play();
   let currentPic = document.getElementById("picTest");
@@ -11,7 +15,10 @@ function picChangeToIvan() {
     document.getElementById("fb3").style.backgroundColor =
     document.getElementById("fb4").style.backgroundColor =
       "";
-  document.body.style.backgroundColor = "rgb(224, 181, 161)";
+
+  let imgContainer = document.getElementsByClassName("imgContainer");
+
+  imgContainer[0].style.backgroundColor = "rgb(224, 181, 161)";
 }
 
 function picChangeToBen() {
@@ -25,7 +32,9 @@ function picChangeToBen() {
     document.getElementById("fb3").style.backgroundColor =
     document.getElementById("fb4").style.backgroundColor =
       "";
-  document.body.style.backgroundColor = "rgb(170, 158, 146)";
+  let imgContainer = document.getElementsByClassName("imgContainer");
+
+  imgContainer[0].style.backgroundColor = "rgb(170, 158, 146)";
 }
 
 function picChangeToFord() {
@@ -39,7 +48,9 @@ function picChangeToFord() {
     document.getElementById("fb2").style.backgroundColor =
     document.getElementById("fb4").style.backgroundColor =
       "";
-  document.body.style.backgroundColor = "rgb(93, 88, 78)";
+  let imgContainer = document.getElementsByClassName("imgContainer");
+
+  imgContainer[0].style.backgroundColor = "rgb(93, 88, 78)";
 }
 
 function picChangeToDefault() {
@@ -52,7 +63,16 @@ function picChangeToDefault() {
     document.getElementById("fb2").style.backgroundColor =
     document.getElementById("fb3").style.backgroundColor =
       "";
-  document.body.style.backgroundColor = "";
+
+  let imgContainer = document.getElementsByClassName("imgContainer");
+  imgContainer[0].style.backgroundColor = "";
+}
+
+function currentHistory() {
+  let display2 = document.getElementById("display2");
+  for (let i = 0; i < listOfNums.length; i++) {
+    display2.value += listOfNums[i];
+  }
 }
 
 function add(num) {
@@ -60,13 +80,14 @@ function add(num) {
   display.value += num;
 }
 
-// function deleteAdd(num) {
-//   let display = document.getElementById("display");
-//   display.value.toString().slice(0, -1);
-// }
-
 function clearD() {
   let display = document.getElementById("display");
+  display.value = "";
+  clearD2();
+  currentHistory();
+}
+function clearD2() {
+  let display = document.getElementById("display2");
   display.value = "";
 }
 function multiplyNum() {
@@ -108,25 +129,25 @@ function solve() {
 
   for (i = 0; i < listOfNums.length; i += 2) {
     if (listOfNums[i + 1] == "*") {
-      let answer = listOfNums[i] * listOfNums[i + 2];
+      let answer = parseFloat(listOfNums[i]) * parseFloat(listOfNums[i + 2]);
       console.log(answer);
       let display = document.getElementById("display");
 
       display.value = answer;
     } else if (listOfNums[i + 1] == "-") {
-      let answer = listOfNums[i] - listOfNums[i + 2];
+      let answer = parseFloat(listOfNums[i]) - parseFloat(listOfNums[i + 2]);
       console.log(answer);
       let display = document.getElementById("display");
 
       display.value = answer;
     } else if (listOfNums[i + 1] == "+") {
-      let answer = parseInt(listOfNums[i]) + parseInt(listOfNums[i + 2]);
+      let answer = parseFloat(listOfNums[i]) + parseFloat(listOfNums[i + 2]);
       console.log(answer);
       let display = document.getElementById("display");
 
       display.value = answer;
     } else if (listOfNums[i + 1] == "/") {
-      let answer = listOfNums[i] / listOfNums[i + 2];
+      let answer = parseFloat(listOfNums[i]) / parseFloat(listOfNums[i + 2]);
       console.log(answer);
       let display = document.getElementById("display");
 
@@ -135,9 +156,11 @@ function solve() {
   }
 
   listOfNums = [];
+  clearD2();
 }
 
 function clearAll() {
   clearD();
+  clearD2();
   listOfNums = [];
 }

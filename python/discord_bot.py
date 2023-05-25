@@ -4,6 +4,7 @@ import word_list
 import os
 import youtube_dl
 from discord import permissions
+import secret
 
 # from musicDiscord import *
 
@@ -62,7 +63,7 @@ async def on_member_remove(member):
     await general_channel.send("Scammer gets scammed:skull:")
 
 
-client.run("MTExMTM3NDY3MTU0NDM0MDU1Mg.Gp7VwD.G7MYgBXvuCnS4Y9EmzlylkEgKsb5rFzmp6S224")
+client.run(secret.token)
 
 
 """
@@ -71,7 +72,7 @@ bot_Command = commands.Bot(command_Prefix = "$")
 
 bot.add_cog(musicDiscord(bot_Command))
 
-bot_Command.run(MTExMTM3NDY3MTU0NDM0MDU1Mg.Gp7VwD.G7MYgBXvuCnS4Y9EmzlylkEgKsb5rFzmp6S224)
+bot_Command.run(secret.token)
 
 
 

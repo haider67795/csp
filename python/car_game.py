@@ -25,6 +25,7 @@ screen_width = 1280
 screen_height = 720
 screen = pygame.display.set_mode((screen_width, screen_height))
 clock = pygame.time.Clock()
+
 carRect = pygame.Rect(
     screen_width // 2 - car.get_width() // 2,
     720 - car.get_height(),
@@ -48,11 +49,8 @@ def move(rect):
     if keys[pygame.K_d] and rect.x < 1080 - car.get_width():
         rect.x += 10
 
-    rect.x += random.randint(-5, 5)
-
 
 xchoices = [275, 570, 865]
-
 oppRect = pygame.Rect(
     xchoices[random.randint(0, 2)],
     0 - oppCar.get_height(),
@@ -72,9 +70,6 @@ def checkCol():
         return 1
     else:
         return 0
-
-
-running = True
 
 
 def moveOpp(opp):
@@ -107,13 +102,16 @@ def health(lives):
         screen.blit(heart, (50 * x, 0))
 
 
+def antiAFK():
+    carRect.x += random.randint(100, 105)
+
+
 count = 0
 font = pygame.font.SysFont("Arial", 20)
 lives = 3
+running = True
 while running:
-    collision_occurred = False
     screen.fill("darkgreen")
-
     road()
 
     buildLanes()

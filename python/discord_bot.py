@@ -5,6 +5,8 @@ import os
 import youtube_dl
 from discord import permissions
 import secret
+from random import randint
+import time
 
 # from musicDiscord import *
 
@@ -15,6 +17,7 @@ activity = discord.Activity(
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
+intents.voice_states = True
 client = discord.Client(intents=intents, activity=activity)
 
 
@@ -25,8 +28,38 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
-        return
+    print(
+        "received a message from: "
+        + str(message.author.name)
+        + " in "
+        + str(message.author.guild)
+    )
+    # people_to_troll = [743194030766030858, 678462534553960478, 481097899887951873]
+    # choice = people_to_troll[randint(0, len(people_to_troll) - 1)]
+    # if message.author == client.user:
+    #     return
+    # if message.author.id == choice:
+    #     channel = message.channel
+    #     await channel.send(
+    #         "https://tenor.com/view/nerd-emoji-nerd-meme-radar-gif-26497624"
+    #     )
+    for role in message.author.roles:
+        if role.name == "rgb":
+            colors = [
+                "#FF0000",
+                "#FF7F00",
+                "#FFFF00",
+                "#00FF00",
+                "#0000FF",
+                "#4B0082",
+                "#9400D3",
+            ]
+            guild = message.author.guild
+            roles = guild.roles
+            role = discord.utils.get(roles, name="rgb")
+            for color in colors:
+                await role.edit(color=(discord.Color.from_str(color)))
+            await role.edit(color=(discord.Color.default()))
     # messasgeSplit = message.content.split()
     # for word in messasgeSplit:
     #     if word in word_list.word_list:
@@ -61,6 +94,33 @@ async def on_member_remove(member):
     general_channel = discord.utils.get(target_server.channels, name="general")
     await general_channel.send(str(member.name) + " got kicked")
     await general_channel.send("Scammer gets scammed:skull:")
+
+
+@client.event
+async def on_voice_state_update(member, before, after):
+    guilds = client.guilds
+    if not before.self_mute and after.self_mute:
+        target_server = discord.utils.get(guilds, name=member.guild.name)
+        print(target_server)
+        general_channel = discord.utils.get(
+            target_server.channels, name="seniorproject"
+        )
+        await general_channel.send(
+            member.name
+            + " muted at: "
+            + time.strftime("%a, %d %b %Y %I:%M:%S", time.localtime())
+        )
+    if before.self_mute and not after.self_mute:
+        target_server = discord.utils.get(guilds, name=member.guild.name)
+        print(target_server)
+        general_channel = discord.utils.get(
+            target_server.channels, name="seniorproject"
+        )
+        await general_channel.send(
+            member.name
+            + " unmuted at "
+            + time.strftime("%a, %d %b %Y %I:%M:%S", time.localtime())
+        )
 
 
 client.run(secret.token)

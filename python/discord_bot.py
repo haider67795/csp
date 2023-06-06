@@ -24,6 +24,7 @@ client = discord.Client(intents=intents, activity=activity)
 @client.event
 async def on_ready():
     print(f"We have logged in as {client.user}")
+    
 
 
 @client.event
@@ -34,15 +35,15 @@ async def on_message(message):
         + " in "
         + str(message.author.guild)
     )
-    # people_to_troll = [743194030766030858, 678462534553960478, 481097899887951873]
-    # choice = people_to_troll[randint(0, len(people_to_troll) - 1)]
-    # if message.author == client.user:
-    #     return
-    # if message.author.id == choice:
-    #     channel = message.channel
-    #     await channel.send(
-    #         "https://tenor.com/view/nerd-emoji-nerd-meme-radar-gif-26497624"
-    #     )
+    people_to_troll = [734193972842594455]
+    choice = people_to_troll[randint(0, len(people_to_troll) - 1)]
+    if message.author == client.user:
+        return
+    if message.author.id == choice:
+        channel = message.channel
+        await channel.send(
+            "https://tenor.com/view/nerd-emoji-nerd-meme-radar-gif-26497624"
+        )
     for role in message.author.roles:
         if role.name == "rgb":
             colors = [
@@ -70,7 +71,7 @@ async def on_message(message):
 @client.event
 async def on_message_delete(message):
     if message.author == client.user:
-        await message.channel.send(message.content + ":skull:")
+        return
     else:
         await message.channel.send(
             str(message.author) + ": '" + message.content + "' :skull:"
@@ -105,22 +106,29 @@ async def on_voice_state_update(member, before, after):
         general_channel = discord.utils.get(
             target_server.channels, name="seniorproject"
         )
-        await general_channel.send(
+        content = str(
             member.name
             + " muted at: "
             + time.strftime("%a, %d %b %Y %I:%M:%S", time.localtime())
         )
+
+        await general_channel.send(content=content, delete_after=5)
+        # target_channel = 
+        # await discord.abc.Connectable.connect(*,timeout=60.0, reconnect=True, cls=<class 'discord.voice_client.VoiceClient'>, self_deaf=False, self_mute=False)
+
     if before.self_mute and not after.self_mute:
         target_server = discord.utils.get(guilds, name=member.guild.name)
         print(target_server)
         general_channel = discord.utils.get(
             target_server.channels, name="seniorproject"
         )
-        await general_channel.send(
+        content = str(
             member.name
-            + " unmuted at "
+            + " unmuted at: "
             + time.strftime("%a, %d %b %Y %I:%M:%S", time.localtime())
         )
+
+        await general_channel.send(content=content, delete_after=5)
 
 
 client.run(secret.token)
@@ -133,10 +141,6 @@ bot_Command = commands.Bot(command_Prefix = "$")
 bot.add_cog(musicDiscord(bot_Command))
 
 bot_Command.run(secret.token)
-
-
-
-
 
 
 """

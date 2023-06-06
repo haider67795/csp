@@ -17,7 +17,7 @@ function picChangeToIvan() {
       "";
 
   let imgContainer = document.getElementsByClassName("imgContainer");
-
+  imgContainer[0].style.background = "";
   imgContainer[0].style.backgroundColor = "rgb(224, 181, 161)";
 }
 
@@ -33,7 +33,7 @@ function picChangeToBen() {
     document.getElementById("fb4").style.backgroundColor =
       "";
   let imgContainer = document.getElementsByClassName("imgContainer");
-
+  imgContainer[0].style.background = "";
   imgContainer[0].style.backgroundColor = "rgb(170, 158, 146)";
 }
 
@@ -43,14 +43,15 @@ function picChangeToFord() {
   currentPic.src = "/media/ford.jpg";
   currentPic.alt = "A picture of Ford";
   document.getElementById("cap").innerHTML = "Ford";
-  document.getElementById("fb3").style.backgroundColor = "rgb(50,50,50)";
+  document.getElementById("fb3").style.background = "rgb(50,50,50)";
   document.getElementById("fb1").style.backgroundColor =
     document.getElementById("fb2").style.backgroundColor =
     document.getElementById("fb4").style.backgroundColor =
       "";
   let imgContainer = document.getElementsByClassName("imgContainer");
 
-  imgContainer[0].style.backgroundColor = "rgb(93, 88, 78)";
+  imgContainer[0].style.background =
+    "linear-gradient(0deg, rgba(91,206,250,1) 0%, rgba(149,192,225,1) 14%, rgba(245,169,184,1) 14%, rgba(245,169,184,1) 36%, rgba(255,255,255,1) 36%, rgba(255,255,255,1) 59%, rgba(245,169,184,1) 59%, rgba(221,175,194,1) 80%, rgba(157,190,222,1) 80%, rgba(91,206,250,1) 100%)";
 }
 
 function picChangeToDefault() {
@@ -65,6 +66,7 @@ function picChangeToDefault() {
       "";
 
   let imgContainer = document.getElementsByClassName("imgContainer");
+  imgContainer[0].style.background = "";
   imgContainer[0].style.backgroundColor = "";
 }
 

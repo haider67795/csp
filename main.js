@@ -1,4 +1,4 @@
-let click = new Audio("/media/click2.mp3");
+let click = new Audio("media/click2.mp3");
 
 function playAudio() {
   click.play();
@@ -7,7 +7,7 @@ function playAudio() {
 function picChangeToIvan() {
   click.play();
   let currentPic = document.getElementById("picTest");
-  currentPic.src = "/media/ivan.jpg";
+  currentPic.src = "media/ivan.jpg";
   currentPic.alt = "A picture of Ivan";
   document.getElementById("cap").innerHTML = "Ivan";
   document.getElementById("fb1").style.backgroundColor = "rgb(50,50,50)";
@@ -24,7 +24,7 @@ function picChangeToIvan() {
 function picChangeToBen() {
   click.play();
   let currentPic = document.getElementById("picTest");
-  currentPic.src = "/media/ben.jpg";
+  currentPic.src = "media/ben.jpg";
   currentPic.alt = "A picture of Ben";
   document.getElementById("cap").innerHTML = "Ben";
   document.getElementById("fb2").style.backgroundColor = "rgb(50,50,50)";
@@ -40,7 +40,7 @@ function picChangeToBen() {
 function picChangeToFord() {
   click.play();
   let currentPic = document.getElementById("picTest");
-  currentPic.src = "/media/ford.jpg";
+  currentPic.src = "media/ford.jpg";
   currentPic.alt = "A picture of Ford";
   document.getElementById("cap").innerHTML = "Ford";
   document.getElementById("fb3").style.background = "rgb(50,50,50)";
@@ -57,7 +57,7 @@ function picChangeToFord() {
 function picChangeToDefault() {
   click.play();
   let currentPic = document.getElementById("picTest");
-  currentPic.src = "/media/default.jpg";
+  currentPic.src = "media/default.jpg";
   currentPic.alt = "No One Selected Yet";
   document.getElementById("cap").innerHTML = "No One Selected Yet";
   document.getElementById("fb1").style.backgroundColor =
